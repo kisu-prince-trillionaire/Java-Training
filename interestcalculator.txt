@@ -1,0 +1,178 @@
+package InterestCalculator;
+
+
+
+import java.util.Scanner;
+import java.lang.*;
+
+
+
+public class calculator {
+    double principleAmount;
+    float rate;
+    int duration;
+    String typeInterest;
+    int age;
+    String gender;
+    
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Please select the type of interest you want to calculate : 1. C0mpound Interest  2. Simple Interest");
+    typeInterest = sc.nextLine();
+    System.out.println("What is the Principle amount: ");
+    principleAmount = sc.nextDouble();
+    System.out.println("What is the rate of Interest: ");
+    rate = sc.nextFloat();
+    System.out.println("What is the duration: ");
+    duration = sc.nextInt();
+    System.out.println("What is your age: ");
+    age = sc.nextInt();
+    System.out.println("What is your Gender: ");
+    gender = sc.nextLine();
+    
+    
+    public calculator(double principleAmount, float rate, int duration, String typeInterest, int age, String gender) {
+        
+        this.principleAmount = principleAmount;
+        this.rate = rate;
+        this.duration = duration;
+        this.typeInterest = typeInterest;
+        this.age = age;
+        this.gender = gender;
+    }
+    
+
+
+
+   public double getPrincipleAmount() {
+        return principleAmount;
+    }
+
+
+
+   public void setPrincipleAmount(double principleAmount) {
+        this.principleAmount = principleAmount;
+    }
+
+
+
+   public float getRate() {
+        return rate;
+    }
+
+
+
+   public void setRate(float rate) {
+        this.rate = rate;
+    }
+
+
+
+   public int getDuration() {
+        return duration;
+    }
+
+
+
+   public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+
+
+   public String getTypeInterest() {
+        return typeInterest;
+    }
+
+
+
+   public void setTypeInterest(String typeInterest) {
+        this.typeInterest = typeInterest;
+    }
+
+
+
+   public int getAge() {
+        return age;
+    }
+
+
+
+   public void setAge(int age) {
+        this.age = age;
+    }
+
+
+
+   public String getGender() {
+        return gender;
+    }
+
+
+
+   public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+
+
+
+    
+    if(age>60)
+        rate = rate+1;
+    
+    if(duration == 1)
+        rate = rate;
+    
+    if(duration > 1 && duration <= 3)
+        rate = rate + 0.5;
+    
+    if(duration > 3 && duration <= 5)
+        rate = rate + 1;
+    
+    if(duration>5)
+        rate = rate + 1.5;
+    
+    if(gender == "female")
+        rate = rate + 0.5;
+    
+
+
+
+   public void simpleInterest()
+    {
+        double result1;
+        result1 = (principleAmount * duration * rate)/100 ;
+        System.out.println("The Principle Amount and Interest accured by depositor each year is " + principleAmount + " " + (principleAmount * rate)/100 + "respectively");
+        System.out.println("The Interest accured by depositer for " + duration + " year is : " result1);
+        
+    }
+    
+    public void compoundInterest()
+    {
+        double result2;
+        result2 = principleAmount * (Math.pow((1 + rate / 100), duration));
+        System.out.println("The Principle Amount and Interest accured by depositor each year is " + principleAmount + " " + principleAmount * (1 + rate/100) + "respectively");
+        System.out.println("The Interest accured by depositer for " + duration + " year is : " result2);
+        
+    }
+
+
+
+}
+
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+        calculator obj = new calculator(double principleAmount, float rate, int duration, String typeInterest, int age, String gender);
+        
+        if(typeInterest == "Simple Interest")
+            obj.simpleInterest();
+        
+        else
+            obj.compoundInterest();
+
+	}
+
+}
